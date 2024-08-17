@@ -1,0 +1,60 @@
+To execute these commands in Termux, follow these steps:
+
+1. **Open Termux**: Start by launching the Termux application on your device.
+
+2. **Update and Upgrade Packages**:
+   ```bash
+   pkg update -y
+   pkg upgrade -y
+   ```
+   - `pkg update -y`: Updates the list of available packages and their versions.
+   - `pkg upgrade -y`: Upgrades all the installed packages to their latest versions.
+
+3. **Install Termux Repositories**:
+   ```bash
+   pkg install tur-repo -y
+   ```
+   - Installs additional Termux repositories.
+
+4. **Install Necessary Packages**:
+   ```bash
+   pkg install git nano binutils build-essential python3.10 -y
+   ```
+   - `git`: Version control system.
+   - `nano`: Text editor.
+   - `binutils`: Collection of binary tools.
+   - `build-essential`: Package that includes essential development tools.
+   - `python3.10`: Installs Python 3.10.
+
+5. **Set Up Python Aliases**:
+   ```bash
+   echo 'alias python3="python3.10"' >> $PREFIX/etc/bash.bashrc
+   echo 'alias pip="python3.10 -m pip"' >> $PREFIX/etc/bash.bashrc
+   source $PREFIX/etc/bash.bashrc
+   ```
+   - Creates an alias so that typing `python3` or `pip` uses Python 3.10.
+
+6. **Clone the Instahack Repository**:
+   ```bash
+   git clone https://github.com/termuxhackers-id/instahack
+   cd instahack
+   ```
+   - `git clone`: Clones the `instahack` repository from GitHub.
+   - `cd instahack`: Navigates into the cloned repository directory.
+
+7. **Upgrade Pip and Install Dependencies**:
+   ```bash
+   python3.10 -m pip install --upgrade pip
+   python3.10 -m pip install wheel
+   python3.10 -m pip install -r requirements.txt
+   ```
+   - Upgrades `pip` to the latest version.
+   - Installs the `wheel` package and all dependencies listed in `requirements.txt`.
+
+8. **Clean Up Markdown Files**:
+   ```bash
+   find data/ -name '*.md' -delete
+   ```
+   - Deletes all `.md` files within the `data/` directory.
+
+Each command should be entered line by line in the Termux terminal. Ensure that you have a stable internet connection during this process, as it involves downloading packages and files from the internet.
